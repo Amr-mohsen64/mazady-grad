@@ -281,8 +281,8 @@
                 username    = $('#Up_UserName').val(),
                 email       = $('#Up_User_Email').val(),
                 firstname   = $('#Up_firstname').val(),
-                lastname    = $('#Up_lasttname').val(),
-                password    = $('#Up_lasttname').val();
+                lastname    = $('#Up_lastname').val(),
+                password    = $('#Up_User_Password').val();
                     
             $.ajax({
                 method : 'post',
