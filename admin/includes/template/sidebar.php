@@ -1,7 +1,7 @@
 <!--Start sidebar-wrapper-->
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
       <div class="brand-logo">
-        <a href="index.html">
+        <a href="index.php">
           <img src="layout/images/logo.png" class="logo-icon" alt="logo icon">
           <h5 class="logo-text">MAZADY</h5>
         </a>
@@ -26,18 +26,25 @@
       <ul class="sidebar-menu">
         <li class="sidebar-header">MAIN NAVIGATION</li>
         <li>
+          <a href="dashboard.php" class="waves-effect">
+            <i class="zmdi zmdi-view-dashboard"></i> <span>dashboard</span>
+          </a>
+        </li>
+        <li>
           <a href="javaScript:void();" class="waves-effect">
-            <i class="zmdi zmdi-view-dashboard"></i> <span>somthing</span><i class="fa fa-angle-left pull-right"></i>
+            <i class="zmdi zmdi-view-dashboard"></i> <span>Manage</span><i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="sidebar-submenu">
-            <li><a href="index.html"><i class="zmdi zmdi-dot-circle-alt"></i> somthing</a></li>
-            <li><a href=""><i class="zmdi zmdi-dot-circle-alt"></i>somthing</a></li>
+            <li><a href="members.php"><i class="zmdi zmdi-dot-circle-alt"></i> Members</a></li>
+            <li><a href="categories.php"><i class="zmdi zmdi-dot-circle-alt"></i>Categories</a></li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-dot-circle-alt"></i> Items</a></li>
+            <li><a href="javaScript:void();"><i class="zmdi zmdi-dot-circle-alt"></i> Comments</a></li>
+
           </ul>
         </li>
         
-        <li class="sidebar-header">LABELS</li>
-        <li><a href="javaScript:void();" class="waves-effect"><i class="zmdi zmdi-coffee text-danger"></i>
-            <span>Important</span></a></li>
+        <li><a href="javaScript:void();" class="waves-effect"><i class="zmdi zmdi-share text-info"></i>
+            <span>Information</span></a></li>
       </ul>
 
     </div>

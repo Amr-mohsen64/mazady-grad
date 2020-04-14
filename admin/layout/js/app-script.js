@@ -20,10 +20,7 @@ $(function () {
         if (!o.is("li")) break;
         o = o.parent().addClass("in").parent().addClass("active");
       }
-    }),
-
-
-
+    });
 
     /* Back To Top */
 
@@ -51,11 +48,9 @@ $(function () {
     $('#pageloader-overlay').fadeOut(1000);
   })
 
-
   $(function () {
     $('[data-toggle="popover"]').popover()
   })
-
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -138,6 +133,7 @@ $(function () {
   // default header & sidebar
 
   $(document).ready(function () {
+
     $("#default-header").click(function () {
       $("#header-setting").removeClass("color-header bg-theme1 bg-theme2 bg-theme3 bg-theme4 bg-theme5 bg-theme6");
     });
@@ -146,6 +142,9 @@ $(function () {
       $("#sidebar-wrapper").removeClass("bg-theme bg-theme1 bg-theme2 bg-theme3 bg-theme4 bg-theme5 bg-theme6");
     });
 
+
+
   });
+
 
 });
