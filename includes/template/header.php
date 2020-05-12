@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+<!-- was deleted  -->
+<html lang="en">
     <head>
-        <meta charest='UTF-8'/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php getTitle()?></title>
         <link rel="icon" href="../../layout/images/logo.png" type="image/x-icon"/>
         <!-- simplebar CSS-->
@@ -18,7 +21,6 @@
         <!-- skins CSS-->
         <link href="<?php echo $css?>skins.css" rel="stylesheet" />
         <!-- skins CSS-->
-        <link href="<?php echo $css?>frontend.css" rel="stylesheet" />
+        <link href="<?php echo $css?>frontend.css?v=<?php echo time(); ?>" rel="stylesheet" />
     </head>
 <body>
-

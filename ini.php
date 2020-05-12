@@ -1,5 +1,5 @@
 ﻿<?php
-    include 'admin/connect.php';
+    include_once 'admin/connect.php';
     // Routes
     $tpl        = 'includes/template/';         // template directory
     $css        = 'layout/css/';                // css directroy
@@ -11,8 +11,8 @@
     
 
     // // include the imprtant files 
-    include $func . 'functions.php';
-    include $tpl . 'header.php';
+    include_once $func . 'functions.php';
+    include_once $tpl . 'header.php';
 
 
     // include navbar in All the pages except the one who has navbar variable 

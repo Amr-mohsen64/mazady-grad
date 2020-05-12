@@ -40,6 +40,10 @@ File: app-style
 /* Google Font*/
 @import url('https://fonts.googleapis.com/css?family=Mukta|Roboto');
 
+/* ==Start Monospaced Google Font== */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+/* ==End Monospaced Google Font== */
+
 /* General */
 html {
     font-family: 'Mukta', sans-serif;
@@ -1072,7 +1076,7 @@ small {
 }
 
 .card.card-primary {
-    border-bottom: 3px solid #7934f3 !important;
+    border-bottom: 3px solid #7934f3;
 
 }
 
@@ -3268,13 +3272,13 @@ label {
 
 .form-control {
     border: 1px solid #ced4da;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 255);
     color: #495057 !important;
 }
 
 .form-control:focus {
-    border: 1px solid rgba(20, 171, 239, 0.54);
-    background-color: rgba(0, 0, 0, .0);
+    border: 2px solid rgba(20, 171, 239, 0.54);
+    background-color: rgba(255, 255, 255, 255);
     box-shadow: 0 0 0 0.2rem rgba(20, 171, 239, 0.0)
 }
 
@@ -6062,7 +6066,7 @@ table.grid td {
 
 
 .footer {
-    bottom: 0px;
+    /* bottom: 0px; */
     color: rgba(0, 0, 0, 0.65);
     text-align: center;
     padding: 12px 30px;
@@ -6195,13 +6199,13 @@ table.grid td {
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
     transform: translateZ(0);
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    /* -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); */
     text-align: center;
     width: 2.5em;
     height: 2.5em;
     line-height: 2.5em;
     border-radius: 50%;
-    -webkit-mask-image: none;
+    /* -webkit-mask-image: none; */
 }
 
 .waves-input-wrapper {

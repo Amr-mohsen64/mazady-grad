@@ -1,11 +1,11 @@
+<!-- Start Initialization File -->
 <?php 
-
-include "ini.php";
-
+    /* ==Start Include ini== */
+        include "ini.php";
+    /* ==End Include ini== */
 ?>
-
-<!-- Start wrapper -->
-
+<!-- End Initialization File -->
+<!-- Start Bootstrap wrapper -->
 <div id="wrapper">
     <div class="card-authentication2 mx-auto my-3">
             <div class="card-group">
@@ -82,12 +82,15 @@ include "ini.php";
     <!--start overlay-->
     <div class="overlay toggle-menu"></div>
 </div>
-<!-- end wrapper -->
+<!-- end Bootstrap wrapper -->
 
-<!-- footer -->
-<?php  include $tpl . 'footer.php';?>
-
-<!-- end main Wraper -->
+<!-- Start Footer File -->
+    <?php 
+        /* ==Start Include Footer== */
+            include $tpl . 'footer.php';
+        /* ==End Include Footer== */
+    ?>
+<!-- End Footer File -->
 
 
 

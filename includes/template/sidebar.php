@@ -3,7 +3,7 @@
       <div class="brand-logo">
         <a href="index.html">
           <img src="layout/images/logo.png" class="logo-icon" alt="logo icon">
-          <h5 class="logo-text">MAZADY</h5>
+          <h5 class="logo-text">gadgetz & gizmoz</h5>
         </a>
       </div>
       <div class="user-details">

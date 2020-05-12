@@ -1,5 +1,156 @@
 ﻿<?php
 
+/* ==Start End User Pages== */
+
+
+
+
+	/* ==Start Check Item In DB Function== */
+		/*
+		** ======================================
+		** checkDB($colName, $tblName, $valName) v1.0
+		** Used To Check The Indicated Item
+		** Existance In Database.
+		** --------------------------------------
+		** Function Has Arguments:
+		** $colName : The Item To Be Selected.
+		** $tblName : The Table To Select From.
+		** $valName : the Value Of Select.
+		** ======================================
+		*/
+
+		function checkDB($colName, $tblName, $valName)
+		{
+
+			/* ==Start Declare DB Connect Variable== */
+				global $db;
+			/* ==End Declare DB Connect Variable== */
+			
+			/*==Start Connect To DB==*/
+				$stmt = $db->prepare('
+					SELECT
+						`' .$colName. '`
+					FROM
+						`' .$tblName. '`
+					WHERE
+						`' .$colName. '` = ?
+				');
+			/*==End Connect To DB==*/
+
+			/* ==Start Execute User Input Value== */
+				$stmt->execute(
+					array(
+						$valName
+					)
+				);
+			/* ==End Execute User Input Value== */
+
+			/* ==Start Record Existance Count== */
+				$count = $stmt->rowCount();
+			/* ==End Record Existance Count== */
+
+			return $count;
+		}
+	/* ==End Check Item In DB Function== */
+
+
+
+
+
+   /* ==Start Bytes Converter Function== */
+      /*
+      ** ======================================
+      ** Converts a long string of bytes into a
+      ** readable format e.g KB, MB, GB, TB, YB.
+      ** ======================================
+      ** @param {Int} num The number of bytes.
+      */
+
+      function readableBytes($bytes) {
+         $i = floor(
+            log($bytes) / log(1024)
+         );
+         $sizes = array(
+            'B',
+            'KB',
+            'MB',
+            'GB',
+            'TB',
+            'PB',
+            'EB',
+            'ZB',
+            'YB'
+         );
+
+         return sprintf(
+            '%.02F',
+            $bytes / pow(
+               1024,
+               $i)
+            ) * 1 . ' ' . $sizes[$i];
+      }
+   /* ==End Bytes Converter Function== */
+
+	/* ==Start Global Extraction Function== */
+
+		/*
+		** ==============================================
+		** extractDB(
+      **    $colName,
+      **    $tblName,
+      **    $stmtCond,
+      **    $ordrName,
+      **    $ordrCond
+      ** ) v1.0
+		** Selects All Records From Any DB Table.
+		** ----------------------------------------------
+		** Function Has Arguments:
+		** $colName 	   : The DB Desired Column OF Extraction.
+		** $tblName    	: The DB Desired Table Of Selection.
+		** $stmtCond 	   : The DB Desired Condition Of Selection.
+		** $stmtAndCond   : The DB Desired Additional Condition Of Selection.
+		** $ordrName   	: The DB Desired column Of ordering.
+		** $ordrCond 	   : The DB Desired Condition Of Ordering.
+		** ==============================================
+		*/
+
+		function extractDB(
+			$colName,
+			$tblName,
+			$stmtCond = NULL,
+			$stmtAndCond = NULL,
+			$ordrName,
+			$ordrCond = 'DESC')
+		{
+			/* ==Start Declare Global DB Connect Variable== */
+				global $db;
+			/* ==End Declare Global DB Connect Variable== */
+			/* ==Start Prepare Select Statement== */
+				$stmt = $db->prepare('
+					SELECT
+						' .$colName. '
+					FROM
+						`' .$tblName. '`
+					' .$stmtCond. '
+					' .$stmtAndCond. '
+					ORDER BY
+						`' .$ordrName. '`
+					' .$ordrCond. '
+					');
+			/* ==End Prepare Select Statement== */
+				$stmt->execute();
+			/* ==Start Execute Select Statement== */
+			/* ==Start Fetch Select Statement== */
+				$recs = $stmt->fetchAll();
+			/* ==End Fetch Select Statement== */
+			/* ==Start Return Records== */
+				return $recs;
+			/* ==End Return Records== */
+      }
+   /* ==End Global Extraction Function== */
+   
+/* ==End End User Pages== */
+
 
    /*
     * get All from database
