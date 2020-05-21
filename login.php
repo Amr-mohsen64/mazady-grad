@@ -45,7 +45,7 @@
                                             ':( Please Type The <strong>Username</strong> You Regsitered With. :(';
                                     }
                                 /* ==End Empty/Length Check== */
-                            }
+                            } 
                         /* ==End isset Username Check== */
                         /* ==Start isset Password Check== */
                             if (isset($_POST['bidder-log-pass'])) {

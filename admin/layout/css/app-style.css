@@ -1512,9 +1512,9 @@ small {
 }
 
 .btn-sm {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 500;
-    padding: 6px 15px;
+    padding: 4px 4px;
 }
 
 .btn-group-sm>.btn {

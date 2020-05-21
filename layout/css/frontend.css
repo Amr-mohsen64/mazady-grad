@@ -10,7 +10,9 @@
 	position: absolute;
 	top: 23%;
 }
-
+.gray-text{
+	color: rgb(75, 74, 74);
+}
 /*end global values in front and back*/
 
 /* start second nav */
@@ -159,6 +161,7 @@
 .session-body .card {
 	margin-top: 20px;
 }
+
 
 .particapates .ordering {
 	padding: 10px;

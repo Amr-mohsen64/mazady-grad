@@ -34,10 +34,9 @@
         }
 
 
-
         // select user info
         $stmt = $db ->prepare('SELECT 
-                                    userID ,email , password  
+                                    *
                                 FROM 
                                     users 
                                 WHERE 
@@ -51,11 +50,13 @@
         $count = $stmt ->rowCount();
         
         // if the user exists in database login
-        if($count > 0){
+        if($count > 0):
             $_SESSION['admin'] = $row['userID'];
             header("location: dashboard.php");
             exit();
-        }
+        else:
+            $formErrors[]=  'User Not Exists';  
+        endif;
     endif;
 ?>
 
@@ -102,7 +103,7 @@
                                 <?php
                                     if(!empty($formErrors)){
                                         foreach($formErrors as $error){
-                                            echo $error;
+                                            echo $error . "<br>";
                                         }
                                     }
                                 ?>

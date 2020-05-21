@@ -240,7 +240,7 @@
                                                     }
                                                 /* ==End File Extension Check== */
                                                 /* ==Start Size Check== */
-                                                    if ($itemImgSizes[$i] > 4194304) {
+                                                    if ($itemImgSizes[$i] > 9194304) {
                                                         $formErrors[] =
                                                             ':( Oops Maximum Size Must Be Less Than / Equal To <strong>4MB</strong>. :(<br />Uploaded File Number: "<strong>' .($i+1). '</strong>".<br />File Name: "<strong>' .$itemImgNames[$i]. '</strong>" Has Size Of: "<strong>' .readableBytes($itemImgSizes[$i]). '</strong>".';
                                                     }
@@ -376,7 +376,7 @@
                     <div class="container-fluid">
                         <!-- Start Page Heading -->
                             <div class="head-style">
-                                <h1 class="text-center">Create New Ad</h1>
+                                <h1 class="text-center mb-4">Create New Ad</h1>
                             </div>
                         <!-- Start Success Message Section -->
                             <?php
@@ -438,7 +438,7 @@
                                                                             pattern=".{3,}"
                                                                             title="Name Must Be At Least 3 Characters"
                                                                             type="text"
-                                                                            class="form-control form-control-lg valid-item-name"
+                                                                            class="form-control form-control valid-item-name"
                                                                             name="item-name"
                                                                             id="item-name"
                                                                             autocomplete="off"
@@ -469,7 +469,7 @@
                                                                         <input
                                                                             type="Number"
                                                                             min="0"
-                                                                            class="form-control form-control-lg valid-item-pric"
+                                                                            class="form-control form-control valid-item-pric"
                                                                             name="item-pric"
                                                                             id="item-pric"
                                                                             autocomplete="off"
@@ -502,7 +502,7 @@
                                                                     pattern=".{10,50}"
                                                                     title="Description Must Be At Least 10 But Not Greater Than 50 Characters"
                                                                     name="item-desc"
-                                                                    class="form-control form-control-lg valid-item-desc"
+                                                                    class="form-control form-control valid-item-desc"
                                                                     id="item-desc"
                                                                     autocomplete="off"
                                                                     required="required"
@@ -535,7 +535,7 @@
                                                                         <select
                                                                             name="item-cate"
                                                                             id="item-cate"
-                                                                            class="form-control form-control-lg valid-item-cate"
+                                                                            class="form-control form-control valid-item-cate"
                                                                             required="required">
                                                                                 <option value="" selected="selected">Choose...</option>
                                                                                 <!-- Start Extract Categories -->
@@ -625,7 +625,7 @@
                                                                             <select
                                                                                 name="item-stat"
                                                                                 id="item-stat"
-                                                                                class="form-control form-control-lg valid-item-stat"
+                                                                                class="form-control form-control valid-item-stat"
                                                                                 required="required">
                                                                                     <option value="" selected="selected">Choose...</option>
                                                                                     <option
@@ -689,7 +689,7 @@
                                                                         <input
                                                                             type="number"
                                                                             min="0"
-                                                                            class="form-control form-control-lg valid-item-mbid"
+                                                                            class="form-control form-control valid-item-mbid"
                                                                             name="item-min-bid"
                                                                             id="item-min-bid"
                                                                             autocomplete="off"
@@ -717,7 +717,7 @@
                                                                         <label for="item-imgs">Item Photos</label>
                                                                         <input
                                                                             type="file"
-                                                                            class="form-control form-control-lg form-control-file valid-item-imgs"
+                                                                            class="form-control form-control form-control-file valid-item-imgs"
                                                                             name="item-imgs[]"
                                                                             accept="image/.jpeg, .jpg, .gif, .png"
                                                                             max-size="4194304"
@@ -743,7 +743,7 @@
                                                                         pattern=".{2,}"
                                                                         title="Name Must Be At Least 2 Characters"
                                                                         type="text"
-                                                                        class="form-control form-control-lg valid-item-coun"
+                                                                        class="form-control form-control valid-item-coun"
                                                                         name="item-made"
                                                                         id="item-made"
                                                                         autocomplete="off"
@@ -771,7 +771,7 @@
                                                                     <label for="item-tags">Tags</label>
                                                                     <input
                                                                         type="text"
-                                                                        class="form-control form-control-lg tags-factory"
+                                                                        class="form-control form-control tags-factory"
                                                                         name="item-tags"
                                                                         id="item-tags"
                                                                         autocomplete="off"
@@ -801,7 +801,7 @@
                                                         <!-- End Form Row -->
                                                         <!-- Start Submit Button -->
                                                             <input
-                                                                class="btn btn-primary btn-lg btn-block bid-btn"
+                                                                class="btn btn-primary bid-btn"
                                                                 type="submit"
                                                                 value="Add Item" />
                                                         <!-- End Submit Button -->

@@ -6,6 +6,8 @@
         <link rel="icon" href="../../layout/images/logo.png" type="image/x-icon"/>
         <!-- simplebar CSS-->
         <link href="<?php echo $plugins?>simplebar/css/simplebar.css" rel="stylesheet" />
+        <!-- timeprcker CSS-->
+        <link href="<?php echo $plugins?>timepicker/tpicker.css" rel="stylesheet" />
         <!-- Bootstrap core CSS-->
         <link href="<?php echo $css?>bootstrap.min.css" rel="stylesheet" />
         <!-- animate CSS-->
@@ -18,8 +20,11 @@
         <link href="<?php echo $css?>app-style.css" rel="stylesheet" />
         <!-- skins CSS-->
         <link href="<?php echo $css?>skins.css" rel="stylesheet" />
+        <!-- jqueryUi CSS-->
+        <link href="<?php echo $css?>jquery-ui.css" rel="stylesheet" />
         <!-- skins CSS-->
         <link href="<?php echo $css?>backend.css" rel="stylesheet" />
+        
     </head>
 <body>
 

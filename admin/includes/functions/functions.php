@@ -149,6 +149,20 @@
    }
 
 
+   /**
+    * function to check img is empty and print img if exist and print deafult if not exist
+    * $dbImg : img name in database 
+    * $alt   : atrnate name of img  
+    */ 
+
+   function imgEmptyCheck($dbImg,$class,$alt,$style = null){
+         if(!empty($dbImg)):
+            echo "<img class='".$class."' src='../data/uploads/avatars/". $dbImg. "' alt='".$alt."' style='". $style . "'>"  ;
+         else:
+            echo "<img class='".$class."' src='layout/images/default.jpg' alt='".$alt."' style='". $style . "' >" ;
+         endif;
+   }
+
 
 ?>
 

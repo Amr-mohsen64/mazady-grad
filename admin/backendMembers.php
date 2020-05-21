@@ -3,7 +3,7 @@
 
         require_once 'connect.php' ;
         require_once 'includes/functions/functions.php';
-
+    
         // view records table 
         if(isset($_POST['readrecord'])){
 
@@ -11,13 +11,13 @@
             if(isset($_GET['page']) && $_GET['page'] == 'pending'){  
                 // get request form dashboard
                 $query = 'AND regStatues = 0';
-            }
+            }   
 
             // select all users exept admin
             $stmt = $db ->prepare("SELECT * FROM `users` WHERE `groupID` != 1 $query ");
             $stmt ->execute();
             $rows = $stmt ->fetchAll();
-
+            
             // if the record is not empty
             if(!empty($rows)): ?>
                 <table class="table table-hover text-center">
@@ -39,8 +39,8 @@
                         <td>
                             <!-- check for empty records and display img -->
                             <?php
-                                if(!empty($row['avatar'])): echo "<img src='uploads/avatars/". $row['avatar'] ."' style='width: 50px;height:50px' alt = 'avatar'>";
-                                else : echo "<img src='uploads/avatars/src-default.jpg' style='width: 50px;height:50px' alt = 'default'>";
+                                if(!empty($row['avatar'])): echo "<img src='../data/uploads/avatars/". $row['avatar'] ."' style='width: 50px;height:50px' alt = 'avatar'>";
+                                else : echo "<img src='../data/uploads/avatars/src-default.jpg' style='width: 50px;height:50px' alt = 'default'>";
                                 endif;
                             ?>
                         </td>
@@ -87,7 +87,7 @@
                 if($check > 0){
                     echo 'Email Already Exist';
                 }else{
-                    $userimg  = img_upload('user_image','uploads/avatars/');    
+                    $userimg  = img_upload('user_image','../data/uploads/avatars/');        
                     $stmt = $db ->prepare("INSERT INTO users(userName , password , email , firstName ,lastName ,regStatues,Date , avatar)
                     VALUES(:zuser , :zpass , :zmail , :zfirst , :zlast ,1, now(), :zavatar)");
                     $stmt ->execute(array(
@@ -100,7 +100,7 @@
                     echo 'created';
                 }
             }
-        }
+        }   
 
         //edit memeber to database
         if(isset($_POST['editid'])){
@@ -129,10 +129,9 @@
             $userid = $_POST['deleteid'];
             $deleteimage = $_POST['deleteimage'];
 
-
             $stmt = $db ->prepare("DELETE FROM users WHERE userID = ?");
-            $stmt ->execute(array($userid));
-            unlink('uploads/avatars/'.$deleteimage);
+            $stmt ->execute(array($userid)) ;
+            unlink('../data/uploads/avatars/'.$deleteimage);
         }
 
         // activate record form database 

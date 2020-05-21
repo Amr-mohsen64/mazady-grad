@@ -15,7 +15,7 @@
                         <!-- Breadcrumb-->
             <div class="row pt-2 pb-2">
                 <div class="col-sm-9">
-                <h4 class="page-title">Manage Members</h4>
+                <h4 class="page-title"><i class="fa fa-users" aria-hidden="true"></i> Manage Members</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">MAZADY</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Mange Members</li>
@@ -48,7 +48,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                                 <span aria-hidden="true" class="close text-white">&times;</span>
                             </button>
-                        </div>
+                        </div>  
                         <div class="modal-body">
                             <p id="addMessge"></p>
                             <form id='addNewMember' enctype='multipart/form-data'>
@@ -255,7 +255,7 @@
                         },
                         success: function (data) {
                             var myObj = JSON.parse(data);
-                            console.log(data);
+                            console.log(myObj);
                             
                             $('#Up_User_ID').val(myObj[0].userID);
                             $('#Up_UserName').val(myObj[0].userName);
