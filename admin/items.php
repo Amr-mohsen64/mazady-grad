@@ -89,7 +89,7 @@
                                                 foreach($allMembers as $user){
                                                     echo "<option value='".$user['userID']."'>".$user['userName']."</option>";
                                                 }
-                                            ?>
+                                            ?>  
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -98,23 +98,47 @@
                                     <option value="0">...</option>
                                         <!-- the next options  -->
                                         <?php 
+                                        /*
                                             $allCategories = getAll("*" , 'categories' , "WHERE parent = 0" , "" , "ID");
                                             // looping on the array that i get from table categories
                                             foreach($allCategories as $category){
                                                 echo "<option value='".$category['ID']."'>".$category['Name']."</option>";
-
+                                                        */
                                                 // start child categoris
-                                                $childCat = getAll("*" , 'categories' , "WHERE parent = {$category['ID']}" , "" , "ID");
+                                                $childCat = getAll("*" , 'categories' , " WHERE PARENT != 0" , "" , "ID");
                                                 foreach($childCat as $cCat){
                                                     echo "<option value='{$cCat['ID']}'>". "----> " .$cCat['Name']."</option>";
-                                                }
+                                                
                                             }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label for="startdate">start date</label>
+                                    <input type="date" class="form-control" id="startdate" name='startdate' placeholder="Choose session Date" autocomplete='off'>
+                                </div>
+                                <div class="form-group">
+                                    <label for="enddate">end date</label>
+                                    <input type="date" class="form-control" id="enddate" name='enddate' placeholder="Choose session Date" autocomplete='off'>
+                                </div>
+                                <!-- time -->
+                                
+                                <div class="form-group">
+                                    <label for="starttime">start time</label>
+                                    <input type="time" class='form-control' name='starttime' id='starttime'>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="endtime">end time</label>
+                                    <input type="time" class='form-control' name='endtime' id='endtime'>
+                                </div>
+                                
+                                
+
+                                <div class="form-group">
                                     <input type="file" class="form-control" name='itemimg' id='itemimg'>
                                 </div>
+                                
 
                                 <div class="form-group">
                                     <input type="hidden" name='itemid' id='item_id'>
@@ -144,6 +168,9 @@
 
     <!--End wrapper-->
     <?php  include $tpl . 'footer.php';?>
+    <script src='layout/plugins/timepicker/tpicker.js'></script>
+    <script src='layout/js/jquery-ui.min.js'></script>
+
 
     <!-- start ajax calls -->
     <script>
@@ -182,14 +209,19 @@
                     country = $('#country').val(),
                     member = $('#member').val(),
                     category = $('#category').val();
-                    status = $('#status').val();
+                    status = $('#status').val(),
+                    startdate = $('#startdate').val(),
+                    enddate = $('#enddate').val();
+                    
+                    // console.log(startdate , enddate);
+                    
 
 
 
                 //check
                 if(itemImg == ''){
                     swal('please selcet item img' , " ", "warning");
-                }else if(itemname == ''){
+                /*}else if(itemname == ''){
                     swal('please selcet item itemname' , " ", "warning");
                 }else if (itemdesc == ''){
                     swal('please selcet item itemdesc' , " ", "warning");
@@ -202,7 +234,7 @@
                 }else if(category == 0){
                     swal('please selcet item category' , " ", "warning");
                 }else if(status == 0 ){
-                    swal('please selcet item status' , " ", "warning");
+                    swal('please selcet item status' , " ", "warning");*/
                 }else{
                     $.ajax({
                     method : 'post',
@@ -251,6 +283,11 @@
                         $('#status').val(myObj[0].Statues);
                         $('#member').val(myObj[0].Memeber_ID );
                         $('#category').val(myObj[0].Cat_ID);
+                        $('#startdate').val(myObj[0].start_date);
+                        $('#enddate').val(myObj[0].end_date);
+                        $('#starttime').val(myObj[0].start_time);
+                        $('#endtime').val(myObj[0].end_time);
+
                         $('#action').val('update');
                         $('#item_id').val(editid); 
                     }   
@@ -292,8 +329,17 @@
                 });
             });
 
-    //end jquery 
+            //trigger date  picker
+            // $('#startdate').datepicker();
+            // $('#enddate').datepicker();
+
+            
+    //end jquery function
     });
+
+    
+
+        
 
     </script>
     <!-- end ajax  calls -->

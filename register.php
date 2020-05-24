@@ -485,7 +485,7 @@
             <div class="row">
                 <!-- Start Grid Col-3 -->
                     <div class="col-md-3 register-left">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <img src="layout/images/logo.png" alt=""/>
                         <h3>Welcome</h3>
                         <p>You are 30 seconds away from gaining your desired Item!</p>
                         <!-- For Future Work -->
@@ -494,6 +494,7 @@
                             name=""
                             value="Login"/> -->
                         <a href="login.php">Login</a><br/>
+                        <span>Already Mazady user ? </span>
                     </div>
                 <!-- End Grid Col-3 -->
                 <!-- Start Grid Col-9 -->

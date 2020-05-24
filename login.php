@@ -330,9 +330,10 @@
                             <!-- Start Resest Link -->
                                 <div class="form-group text-right">
                                 <!-- for future work -->
+                                <strong>New User ?</strong>
                                     <a
-                                        href="#"
-                                        class="ForgetPwd">Forget Password?</a>
+                                        href="register.php"
+                                        class="ForgetPwd">Register</a>
                                 </div>
                             <!-- End Reset Link -->
                     </form>
@@ -409,10 +410,11 @@
                             <!-- Start Reset Link -->
                                 <div class="form-group text-right">
                                 <!-- For Future Work -->
+                                <strong class='text-white'>New User ? </strong>
                                     <a
-                                        href="#"
+                                        href="register.php"
                                         class="ForgetPwd"
-                                        value="Login">Forget Password?</a>
+                                        value="Login">Register</a>
                                 </div>
                             <!-- End Reset Link -->
                     </form>

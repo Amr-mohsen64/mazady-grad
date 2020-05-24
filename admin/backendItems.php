@@ -69,11 +69,17 @@
                 $status                 = $_POST['status'];
                 $member                 = $_POST['member'];
                 $category               = $_POST['category'];
+                $starttime              = $_POST['starttime'];
+                $endtime                = $_POST['endtime'];
+                $startdate              = $_POST['startdate'];
+                $endate                 = $_POST['enddate'];
 
+                // echo $startdate +$endate;
+                
                 $itemimg  = img_upload('itemimg','../data/uploads/items/');   
                 // insert Item info into data base
-                $stmt = $db ->prepare("INSERT INTO items(Name , Desciription , Price , Country_Made , image , Statues, Cat_ID , Memeber_ID, Add_Date)
-                                                VALUES(:zname , :zdesc , :zprice , :zcountry , :zimg, :zstatues , :zcat , :zmember , now() )"); 
+                $stmt = $db ->prepare("INSERT INTO items(Name , Desciription , Price , Country_Made , image , Statues, Cat_ID , Memeber_ID, Add_Date , approve,start_time	, end_time, start_date , end_date)
+                                                VALUES(:zname , :zdesc , :zprice , :zcountry , :zimg, :zstatues , :zcat , :zmember , now() ,1 , :zstarttime, :zendtime,:zstartdate,:zendate)"); 
                 $stmt ->execute(array(
                     'zname'       => $itemname ,
                     'zdesc'       => $itemdesc ,
@@ -82,12 +88,18 @@
                     'zimg'        => $itemimg ,
                     'zstatues'    => $status ,
                     'zcat'        => $category ,
-                    'zmember'     => $member 
+                    'zmember'     => $member ,
+                    'zstarttime'     => $starttime ,
+                    'zendtime'     => $endtime ,
+                    'zstartdate'     => $startdate ,
+                    'zendate'     => $endate 
                 ));
             
                 if($stmt){
                     echo 'created';
                 }
+                
+                
             endif;
 
             //edit items  
@@ -109,6 +121,7 @@
                 $status                 = $_POST['status'];
                 $member                 = $_POST['member'];
                 $category               = $_POST['category'];
+                
 
                 //query
                 $stmt = $db ->prepare("UPDATE `items` SET `Name`= ?, `Desciription` = ? , `Price` = ? , `Country_Made` = ? , `Statues` = ?  , `Cat_ID` = ?  , `Memeber_ID` = ? WHERE itemID = ?");

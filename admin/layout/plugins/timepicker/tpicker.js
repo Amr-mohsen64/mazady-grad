@@ -100,4 +100,5 @@ $(function(){
 		$('.mintt').hide();
 		fmi = parseInt(vaa);updatetime();
 	});
+	
 });

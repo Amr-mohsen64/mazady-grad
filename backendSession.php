@@ -44,7 +44,7 @@
                                     </span>
                                     <div class="user-info d-inline-block ml-3 ">
                                         <span> <?php echo $item['userName']?></span>
-                                        <span class="d-block">Submited Price : <strong class="text-success"><?php echo $item['bid_price']?>$</strong></span>
+                                        <span class="d-block">Submited Price :<strong class="text-success"> $ <?php echo $item['bid_price']?></strong></span>
                                     </div>
                                 </li>
                         <?php   endforeach; ?>
@@ -59,11 +59,10 @@
 
         //insert data
         if($_POST['action'] == 'insert'):
-
-            $userid =       $_POST['userid'] ;
-            $itemid =       $_POST['itemid'];
-            $bidprice =     $_POST['bid_price'];
-            $minprice =     $_POST['minprice'];
+            $userid =       filter_var( $_POST['userid'], FILTER_VALIDATE_INT);
+            $itemid =       filter_var( $_POST['itemid'], FILTER_VALIDATE_INT);
+            $bidprice =     filter_var( $_POST['bid_price'], FILTER_VALIDATE_INT);
+            $minprice =    filter_var( $_POST['minprice'], FILTER_VALIDATE_INT); ;
 
             if($bidprice < $minprice):
                 $formErrors[] = "please select price";
@@ -83,12 +82,39 @@
                 }
 
             endif;
-            
-
-
-            
-
         endif;
+
+        if($_POST['action'] == 'loadtime'):
+            $itemid = $_POST['itemid'];
+            $stmt = $db->prepare("SELECT * FROM items WHERE itemID = ? AND approve = 1");
+
+            // Excute QUery 
+            $stmt ->execute(array($itemid));        // all depends on item id 
+            $count = $stmt ->rowCount();
+            $item = $stmt ->fetch();
+
+            // time functions
+            $startDate  = date_create($item['start_date']);
+            $endDate    = date_create($item['end_date']);
+
+            //start and end time
+            $startTime  = strtotime($item['start_time']);
+            $endTime    = strtotime($item['end_time']);
+            //current date and time
+            $current_date    = date_create(date("Y-m-d"));
+            $current_time    = strtotime(date("h:i:sa"));
+
+            //left date and time
+            $leftDate   = date_diff($endDate,$current_date);
+            $leftTime   = $endTime - $current_time;
+
+            //count date
+            $countDate=  $leftDate->format("%a days");
+            $countTime = strftime("%H:%M:%S", $leftTime-6000);
+
+            echo $countDate ."   And ".$countTime;
+        endif;
+
     endif;
 
     

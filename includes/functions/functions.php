@@ -272,6 +272,30 @@
    return $rows;  
    }
 
+
+      // img upload
+
+      
+   function img_upload($file,$destenation){
+
+      //image
+      $image      = $_FILES[$file];
+      $imageName  = $image['name'];
+      $imageType  = $image['type'];
+      $imageTmp   = $image['tmp_name'];
+      $imageSize  = $image['size'];
+      $imageError  = $image['error'];
+      // $filesCount = count($imageName); 
+
+      //extract image extension 
+      $imageExtension = explode('.' , $imageName);
+      $lastElementExtension = strtolower(end($imageExtension));      
+      $imgRand = rand(0,100000000000000000) . '.' . $lastElementExtension; 
+      
+      move_uploaded_file($imageTmp , $destenation . $imgRand); 
+      return $imgRand; 
+   }
+   
    /**
     * function to check img is empty and print img if exist and print deafult if not exist
     * $dbImg : img name in database 
