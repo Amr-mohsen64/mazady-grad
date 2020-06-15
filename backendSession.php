@@ -96,10 +96,11 @@
             // time functions
             $startDate  = date_create($item['start_date']);
             $endDate    = date_create($item['end_date']);
-
+            
             //start and end time
             $startTime  = strtotime($item['start_time']);
             $endTime    = strtotime($item['end_time']);
+            
             //current date and time
             $current_date    = date_create(date("Y-m-d"));
             $current_time    = strtotime(date("h:i:sa"));

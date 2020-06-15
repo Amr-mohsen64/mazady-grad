@@ -1,6 +1,6 @@
 <?php 
 
-include "ini.php";
+
 
     session_start();
 	$pageTitle = 'session';
@@ -28,6 +28,18 @@ include "ini.php";
 		$stmt ->execute(array($itemid));        // all depends on item id 
 		$count = $stmt ->rowCount();
         $item = $stmt ->fetch();
+        
+        $endDate =  $item['end_date'];
+        $endTime = $item['end_time'];
+        $current_date    = date("Y-m-d");
+        $current_time    = date("h:i:s");
+        
+        if( $current_date > $endDate){
+            header('location:index.php');
+        }
+
+        
+
         
         // // time functions
         // $startDate  = date_create($item['start_date']);
@@ -95,7 +107,7 @@ include "ini.php";
                                 <div class="card-header">New Submition</div>
                                 <div class="card-body d-flex">
                                 <?php 
-                                    echo "<img src='data/uploads/items/".$item['Image'] ."' class='mr-3' alt='Card image cap'>";
+                                    echo "<img src='data/uploads/items/".$item['Image'] ."' class='mr-3 bid-img' alt='Card image cap'>";
                                 ?>
                                 <ul class="product-info ml-4 list-unstyled">
                                     <li>Product Name<strong> : <?php echo $item['Name']?></strong></li>

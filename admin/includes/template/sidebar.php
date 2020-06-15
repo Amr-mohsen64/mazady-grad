@@ -47,7 +47,6 @@
             <li><a href="members.php"><i class="fa fa-users" aria-hidden="true"></i> Members</a></li>
             <li><a href="categories.php"><i class="fa fa-window-maximize" aria-hidden="true"></i>Categories</a></li>
             <li><a href="items.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Items</a>
-            <li><a href="session.php"><i class="fa fa-clock-o" aria-hidden="true"></i> Sessions</a></li>
           </ul>
         </li>
       </ul>

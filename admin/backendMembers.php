@@ -82,20 +82,22 @@
                 $firstname      = filter_var($_POST['firstname'],FILTER_SANITIZE_STRING) ;
                 $lastname       = filter_var($_POST['lastname'],FILTER_SANITIZE_STRING) ;
                 $password       = sha1($_POST['password']) ;
+                $status                 = $_POST['status'];
                 
                 $check          = checkItem("email" ,"users" , $email);
                 if($check > 0){
                     echo 'Email Already Exist';
                 }else{
                     $userimg  = img_upload('user_image','../data/uploads/avatars/');        
-                    $stmt = $db ->prepare("INSERT INTO users(userName , password , email , firstName ,lastName ,regStatues,Date , avatar)
-                    VALUES(:zuser , :zpass , :zmail , :zfirst , :zlast ,1, now(), :zavatar)");
+                    $stmt = $db ->prepare("INSERT INTO users(userName , password , email , firstName ,lastName ,regStatues, user_stat ,Date , avatar)
+                    VALUES(:zuser , :zpass , :zmail , :zfirst , :zlast ,1, :zstat,now(), :zavatar)");
                     $stmt ->execute(array(
                     'zuser'     => $username ,
                     'zpass'     => $password ,
                     'zmail'     => $email ,
                     'zfirst'     => $firstname ,
                     'zlast'     => $lastname ,
+                    'zstat'    => $status ,
                     'zavatar'   => $userimg ));
                     echo 'created';
                 }
@@ -105,7 +107,7 @@
         //edit memeber to database
         if(isset($_POST['editid'])){
             $editid = intval($_POST['editid']);
-            $stmt = $db ->prepare('SELECT * FROM users WHERE userID = ?');
+            $stmt = $db ->prepare('SELECT * FROM users WHERE userID = ?');  
             $stmt ->execute(array($editid));
             $rows = $stmt->fetchAll();
             echo json_encode($rows);
@@ -118,10 +120,11 @@
             $email          = $_POST['email'];
             $firstname      = $_POST['firstname'];
             $lastname       = $_POST['lastname'];
+            $userstat       = $_POST['userstat'];
             $password       = sha1($_POST['password']);
 
-            $stmt = $db ->prepare("UPDATE `users` SET `userName`= ?, `Email` = ? , `firstName` = ? , `lastName` = ?,  `password` = ?  WHERE userID = ?");
-            $stmt ->execute(array($username , $email , $firstname , $lastname , $password , $updateid ));
+            $stmt = $db ->prepare("UPDATE `users` SET `userName`= ?, `Email` = ? , `firstName` = ? , `lastName` = ?,  `password` = ? ,  `user_stat` = ?  WHERE userID = ?");
+            $stmt ->execute(array($username , $email , $firstname , $lastname , $password ,$userstat,  $updateid ));
         }
 
         // delete record form database 

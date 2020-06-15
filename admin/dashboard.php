@@ -87,13 +87,13 @@
                             </a>
                         </div>
                         <div class="col-12 col-lg-6 col-xl-3">
-                            <a href="comments.php">
+                            <a href="items.php">
                                 <div class="card gradient-forest">
                                     <div class="card-body">
                                         <div class="media d-flex">
                                             <div class="media-body">
-                                                <span class="text-white">Total comptesion</span>
-                                                <h3 class="text-white">22</h3>
+                                                <span class="text-white">peneding items</span>
+                                                <h3 class="text-white">2</h3>
                                             </div>
                                             <div class="w-icon">
                                                 <i class="fa fa-comments text-white"></i>

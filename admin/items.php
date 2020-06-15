@@ -64,6 +64,10 @@
                                     <input type="text" class="form-control" id="itemprice" name='itemprice' placeholder="Type item Price">
                                 </div>
                                 <div class="form-group">
+                                    <label for="min_bid"> Mimum bid</label>
+                                    <input type="text" class="form-control" id="min_bid" name='min_bid' placeholder="Type item min_bid">
+                                </div>
+                                <div class="form-group">
                                     <label for="country">Country Made</label>
                                     <input type="text" class="form-control" id="country" name='country' placeholder="Type item country Made">
                                 </div>
@@ -77,7 +81,7 @@
                                         <option value="3">Used</option>
                                         <option value="4">Very Old</option>
                                     </select>
-                                </div>
+                                </div>  
                                 <div class="form-group">
                                     <label for="member">Member</label>
                                     <select  name="member" id="member">
@@ -115,22 +119,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="startdate">start date</label>
-                                    <input type="date" class="form-control" id="startdate" name='startdate' placeholder="Choose session Date" autocomplete='off'>
+                                    <input type="date" class="form-control" id="startdate" name='startdate' placeholder="Choose session Date" autocomplete='off' required='off'>
                                 </div>
                                 <div class="form-group">
                                     <label for="enddate">end date</label>
-                                    <input type="date" class="form-control" id="enddate" name='enddate' placeholder="Choose session Date" autocomplete='off'>
+                                    <input type="date" class="form-control" id="enddate" name='enddate' placeholder="Choose session Date" autocomplete='off' required='off'>
                                 </div>
                                 <!-- time -->
-                                
+                                                
                                 <div class="form-group">
                                     <label for="starttime">start time</label>
-                                    <input type="time" class='form-control' name='starttime' id='starttime'>
+                                    <input type="time" class='form-control' name='starttime' id='starttime' required='off'>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="endtime">end time</label>
-                                    <input type="time" class='form-control' name='endtime' id='endtime'>
+                                    <input type="time" class='form-control' name='endtime' id='endtime' required='off'>
                                 </div>
                                 
                                 
@@ -206,22 +210,22 @@
                     itemname = $('#itemname').val(),
                     itemdesc = $('#itemdesc').val(),
                     itemprice = $('#itemprice').val(),
+                    min_bid = $('#min_bid').val(),
                     country = $('#country').val(),
                     member = $('#member').val(),
                     category = $('#category').val();
                     status = $('#status').val(),
                     startdate = $('#startdate').val(),
                     enddate = $('#enddate').val();
+
                     
                     // console.log(startdate , enddate);
                     
 
-
-
                 //check
                 if(itemImg == ''){
                     swal('please selcet item img' , " ", "warning");
-                /*}else if(itemname == ''){
+                }else if(itemname == ''){
                     swal('please selcet item itemname' , " ", "warning");
                 }else if (itemdesc == ''){
                     swal('please selcet item itemdesc' , " ", "warning");
@@ -234,7 +238,7 @@
                 }else if(category == 0){
                     swal('please selcet item category' , " ", "warning");
                 }else if(status == 0 ){
-                    swal('please selcet item status' , " ", "warning");*/
+                    swal('please selcet item status' , " ", "warning");
                 }else{
                     $.ajax({
                     method : 'post',
@@ -279,6 +283,7 @@
                         $('#itemname').val(myObj[0].Name);
                         $('#itemdesc').val(myObj[0].Desciription);
                         $('#itemprice').val(myObj[0].Price);
+                        $('#min_bid').val(myObj[0].minBid);
                         $('#country').val(myObj[0].Country_Made);
                         $('#status').val(myObj[0].Statues);
                         $('#member').val(myObj[0].Memeber_ID );
@@ -312,13 +317,13 @@
                             
                             $.ajax({
                                 method : 'post',
-                                url    : 'backendCat.php',
+                                url    : 'backendItems.php',
                                 data   : {action:action,deleteid:deleteid,deleteimage:deleteimage},
                                 success:function(data){
+                                    console.log(data);
+                                    
                                     if(data.trim() == 'deleted'){
-                                        swal("Your item has been deleted!", {
-                                        icon: "success",
-                                        });
+                                        swal('please selcet item img' , " ", "success");
                                         loadData();
                                     }
                                 }

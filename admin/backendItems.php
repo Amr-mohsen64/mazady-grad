@@ -65,6 +65,7 @@
                 $itemname               = $_POST['itemname'];
                 $itemdesc               = $_POST['itemdesc'];
                 $itemprice              = $_POST['itemprice'];
+                $min_bid                = $_POST['min_bid'];
                 $country                = $_POST['country'];
                 $status                 = $_POST['status'];
                 $member                 = $_POST['member'];
@@ -78,12 +79,13 @@
                 
                 $itemimg  = img_upload('itemimg','../data/uploads/items/');   
                 // insert Item info into data base
-                $stmt = $db ->prepare("INSERT INTO items(Name , Desciription , Price , Country_Made , image , Statues, Cat_ID , Memeber_ID, Add_Date , approve,start_time	, end_time, start_date , end_date)
-                                                VALUES(:zname , :zdesc , :zprice , :zcountry , :zimg, :zstatues , :zcat , :zmember , now() ,1 , :zstarttime, :zendtime,:zstartdate,:zendate)"); 
+                $stmt = $db ->prepare("INSERT INTO items(Name , Desciription , minBid ,  Price , Country_Made , image , Statues, Cat_ID , Memeber_ID, Add_Date , approve,start_time	, end_time, start_date , end_date)
+                                                VALUES(:zname , :zdesc , :zminbid ,:zprice , :zcountry , :zimg, :zstatues , :zcat , :zmember , now() ,1 , :zstarttime, :zendtime,:zstartdate,:zendate)"); 
                 $stmt ->execute(array(
                     'zname'       => $itemname ,
                     'zdesc'       => $itemdesc ,
                     'zprice'      => $itemprice ,
+                    'zminbid'     => $min_bid ,
                     'zcountry'    => $country ,
                     'zimg'        => $itemimg ,
                     'zstatues'    => $status ,
@@ -116,7 +118,8 @@
                 $itemid                 = $_POST['itemid'];
                 $itemname               = $_POST['itemname'];
                 $itemdesc               = $_POST['itemdesc'];
-                $itemprice              = $_POST['itemprice'];
+                $itemprice              = filter_var($_POST['itemprice'],FILTER_SANITIZE_NUMBER_INT);
+                $min_bid                = filter_var($_POST['min_bid'],FILTER_SANITIZE_NUMBER_INT);
                 $country                = $_POST['country'];
                 $status                 = $_POST['status'];
                 $member                 = $_POST['member'];
@@ -124,8 +127,8 @@
                 
 
                 //query
-                $stmt = $db ->prepare("UPDATE `items` SET `Name`= ?, `Desciription` = ? , `Price` = ? , `Country_Made` = ? , `Statues` = ?  , `Cat_ID` = ?  , `Memeber_ID` = ? WHERE itemID = ?");
-                $stmt ->execute(array($itemname , $itemdesc , $itemprice ,$country,$status ,$category,$member,$itemid));
+                $stmt = $db ->prepare("UPDATE `items` SET `Name`= ?, `Desciription` = ? , `minBid` = ? ,`Price` = ? , `Country_Made` = ? , `Statues` = ?  , `Cat_ID` = ?  , `Memeber_ID` = ? WHERE itemID = ?");
+                $stmt ->execute(array($itemname , $itemdesc , $min_bid , $itemprice ,$country,$status ,$category,$member,$itemid));
                 if($stmt){
                     echo 'updated';
                 }
@@ -135,12 +138,13 @@
             if($_POST['action'] == 'delete'):
                 $deleteid =  $_POST['deleteid'];
                 $deleteimage = $_POST['deleteimage'];
-                unlink('../data/uploads/items/'.$deleteimage);
+            
                 
                 $stmt = $db ->prepare("DELETE FROM items WHERE itemID = ?");
                 $stmt ->execute(array($deleteid));                
                 if($stmt){
                     echo 'deleted';
+                    unlink('../data/uploads/items/'. $deleteimage);
                 }
             endif;
         

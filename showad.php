@@ -73,7 +73,7 @@
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 										<h6 class="product-price mt-4 gray-text">minimum Bid : <span class="text-primary">$<?php echo $item['minBid'] ?></span></h6>
 										<h6 class="product-price mt-4 gray-text">Added Date : <span class="text-primary"><?php echo $item['Add_Date'] ?></span></h6>
-										<h6 class="product-price mt-4 gray-text">Category : <a href="categories.php?pageid='<?php echo $item['Cat_ID'] ?>"><?php echo $item['Name']?></a></span></h6>
+										<h6 class="product-price mt-4 gray-text">Category : <a href="products.php?pageid=<?php echo $item['Cat_ID'] ?>"><?php echo $item['Category_Name']?></a></span></h6>
 
 										<h6 class="product-price mt-4 gray-text">Status : <span class="text-primary">
 											<?php 

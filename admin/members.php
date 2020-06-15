@@ -77,6 +77,13 @@
                                     <input type="file" class="form-control" id="u_image" name='user_image'>
                                 </div>
                                 <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select  name="status" id="status">
+                                        <option value="0">bidder</option>
+                                        <option value="1">seller</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <input type="hidden" name='action' id='action'>
                                     <button id='addMemberBtn' type="submit" value='insert' name ='insert' class="btn btn-primary px-5"><i class="fa fa-plus"></i> Add Member</button>
                                 </div>
@@ -118,6 +125,13 @@
                             <label for="Up_User_FullName">last Name</label>
                             <input type="text" class="form-control" id="Up_lastname" placeholder="Type User FullName ">
                             </div>
+                            <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select  name="up_status" id="up_status">
+                                        <option value="0">bidder</option>
+                                        <option value="1">seller</option>
+                                    </select>
+                                </div>
                             <div class="form-group">
                             <label for="Up_User_Password">Password</label>
                             <input type="text" class="form-control" id="Up_User_Password" placeholder="Leave blank if you want">
@@ -240,7 +254,7 @@
                                 }
                             }
                         });
-                    }
+                    }   
                 });
 
                 // edit Member function
@@ -262,6 +276,8 @@
                             $('#Up_User_Email').val(myObj[0].email);
                             $('#Up_firstname').val(myObj[0].firstName);
                             $('#Up_lastname').val(myObj[0].lastName);
+                            $('#up_status').val(myObj[0].user_stat);
+                            
                             
                         }
                     });
@@ -274,6 +290,7 @@
                             email       = $('#Up_User_Email').val(),
                             firstname   = $('#Up_firstname').val(),
                             lastname    = $('#Up_lastname').val(),
+                            userstat    = $('#up_status').val(),
                             password    = $('#Up_User_Password').val();
                                 
                         $.ajax({
@@ -285,6 +302,7 @@
                                 email       : email ,
                                 firstname   : firstname,
                                 lastname    : lastname ,
+                                userstat    : userstat ,
                                 password    : password
                             },
                             success : function(data){

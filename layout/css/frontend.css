@@ -171,6 +171,10 @@
 	padding: 20px;
 	width: 100%
 }
+.bid-img {
+	max-height: 200px;
+    max-width: 200px;
+}
 
 .product-info li {
 	padding-top: 5px;
